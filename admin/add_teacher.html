@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="add_teacher_style.css">      
+    <script src="admin_script.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-title">Dashboard</div>
+        <div class="logout">
+            <a href="login.html" class="button">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="avatar.png" alt="Avatar" class="sidebar-avatar">
+                <h3 class="sidebar-username">Admin</h3>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-users count-icon"></i><a href="class.php">Class</a>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-user-graduate count-icon"></i><a href="student.html">Student</a>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-chalkboard-teacher count-icon"></i><a href="teacher.html">Teacher</a>
+            </div>
+            <div class="sidebar-item">
+                <i class="far fa-calendar-alt count-icon"></i><a href="../Achieve/main.php">Achievement</a>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <br><br>
+            <h2>Add Teacher</h2>
+            <form action="add_teacher.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <label>First Name:</label>
+                <input type="text" name="first_name" required>
+            
+                <label>Last Name:</label>
+                <input type="text" name="last_name" required>
+            
+                <label>Register No:</label>
+                <input type="text" name="reg_no" required>
+            
+                <label>Email:</label>
+                <input type="email" name="email" required>
+            
+                <label>Phone Number:</label>
+                <input type="tel" name="phone_number" required>
+            
+                <label>Address:</label>
+                <textarea name="address" required></textarea>
+            
+                <input type="submit" value="Submit">
+            </form>
+            <br><br><br><br><br><br><br>
+
+        </div>
+    </div>
+
+    <div class="footer" style="background-color: #333;">
+        <div>
+            <div class="circle" style="background-color: #7e7e7b;">
+                <a href="https://www.tce.edu/">
+                    <i class="fa fa-globe"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #3b5998;">
+                <a href="https://www.facebook.com/TheOfficialTCEPage">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #1da1f2;">
+                <a href="https://twitter.com/tceofficialpage">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #0e76a8;">
+                <a href="https://www.linkedin.com/in/tcemadurai">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #fa099d;">
+                <a href="https://www.instagram.com/tcemadurai/">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #ff0000;">
+                <a href="https://www.youtube.com/ThiagarajarCollegeofEngineeringTCE">
+                    <i class="fa fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div align="center">
+            Made in India <br> Copyright &copy; 2023 TCE
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+
+             // Add these lines to check the values
+             console.log("Register No:", regNo);
+             console.log("Email:", email);
+             console.log("Phone Number:", phoneNumber);
+             console.log("Address:", address);
+
+            var firstName = document.getElementsByName("first_name")[0].value;
+            if (firstName.length === 0) {
+                alert("First Name is required");
+                return false;
+            }
+
+            var lastName = document.getElementsByName("last_name")[0].value;
+            if (lastName.length === 0) {
+                alert("Last Name is required");
+                return false;
+            }
+
+            var regNo = document.getElementsByName("reg_no")[0].value;
+            if (!/^[a-zA-Z0-9]{4}$/.test(regNo)) {
+                alert("Register No must be 10 characters long and can contain both digits and alphabets");
+                return false;
+            }
+
+            var email = document.getElementsByName("email")[0].value;
+            if (!(/^\S+@\S+\.\S+$/.test(email))) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            var phoneNumber = document.getElementsByName("phone_number")[0].value;
+            if (!(/^\d{10}$/.test(phoneNumber))) {
+                alert("Invalid phone number");
+                return false;
+            }
+
+            var address = document.getElementsByName("address")[0].value;
+            if (address.length === 0) {
+                alert("Address is required");
+                return false;
+            }
+
+            var uploaded = document.getElementsByName("uploaded")[0].checked;
+            if (!uploaded) {
+                alert("Uploaded checkbox must be checked");
+                return false;
+            }
+
+            return true; 
+        }
+
+        // Add this to your existing script
+        document.getElementsByName("image")[0].addEventListener('change', function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = document.getElementById("uploadedImage");
+                img.style.display = "block";
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+
+    </script>
+
+</body>
+</html>

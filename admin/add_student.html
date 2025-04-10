@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="add_student_style.css">      
+    <script src="admin_script.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-title">Dashboard</div>
+        <div class="logout">
+            <a href="login.html" class="button">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="avatar.png" alt="Avatar" class="sidebar-avatar">
+                <h3 class="sidebar-username">Admin</h3>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-users count-icon"></i><a href="class.php">Class</a>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-user-graduate count-icon"></i><a href="student.html">Student</a>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-chalkboard-teacher count-icon"></i><a href="teacher.html">Teacher</a>
+            </div>
+            <div class="sidebar-item">
+                <i class="far fa-calendar-alt count-icon"></i><a href="../Achieve/main.php">Achievement</a>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <br><br>
+            <h2>Add Student</h2>
+            <form action="add_student.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <label>First Name:</label>
+                <input type="text" name="first_name" required>
+            
+                <label>Last Name:</label>
+                <input type="text" name="last_name" required>
+            
+                <label>Register No:</label>
+                <input type="text" name="register_no" required>
+            
+                <label>Roll No:</label>
+                <input type="text" name="roll_no" required>
+
+                <label>Year:</label>
+                <input type="text" name="year" required>
+            
+                <label>Email:</label>
+                <input type="email" name="email" required>
+            
+                <label>Phone:</label>
+                <input type="tel" name="phone" required>
+            
+                <label>Address:</label>
+                <textarea name="address" required></textarea>
+            
+                <label>Father's Name:</label>
+                <input type="text" name="father" required>
+            
+                <label>Mother's Name:</label>
+                <input type="text" name="mother" required>
+            
+                <label>Aadhar No:</label>
+                <input type="text" name="aadhar" required>
+            
+                <label>Date of Birth:</label>
+                <input type="date" name="dob" required>
+
+                <label>Gender:</label>
+                <div class="gender-input">
+                    <input type="radio" name="gender" value="Male" id="male" required>
+                    <label for="male">Male</label>
+                </div>
+                <div class="gender-input">
+                    <input type="radio" name="gender" value="Female" id="female" required>
+                    <label for="female">Female</label>
+                </div>
+                <div class="gender-input">
+                    <input type="radio" name="gender" value="Other" id="other" required>
+                    <label for="other">Other</label>
+                </div>
+                
+                <br>
+                
+                <label>District:</label>
+                <input type="text" name="dist" required>
+            
+                <label>Pincode:</label>
+                <input type="text" name="pincode" required>
+            
+                <label>Upload File:</label>
+                <input type="file" name="file" required> <br>
+                
+                <label>Upload Image:</label>
+                <input type="file" name="image" required> <br>
+                
+                <!-- Add this after the checkbox -->
+                <label>Uploaded Image:</label>
+                <img id="uploadedImage" src="#" alt="Uploaded Image" style="max-width: 300px; max-height: 300px; display: none;">
+                
+                <label>Uploaded:</label>
+                <input type="checkbox" name="uploaded" value="yes" required> <br><br>
+            
+                <input type="submit" value="Submit">
+            </form>
+            <br><br><br><br><br><br><br>
+
+        </div>
+    </div>
+
+    <div class="footer" style="background-color: #333;">
+        <div>
+            <div class="circle" style="background-color: #7e7e7b;">
+                <a href="https://www.tce.edu/">
+                    <i class="fa fa-globe"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #3b5998;">
+                <a href="https://www.facebook.com/TheOfficialTCEPage">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #1da1f2;">
+                <a href="https://twitter.com/tceofficialpage">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #0e76a8;">
+                <a href="https://www.linkedin.com/in/tcemadurai">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #fa099d;">
+                <a href="https://www.instagram.com/tcemadurai/">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #ff0000;">
+                <a href="https://www.youtube.com/ThiagarajarCollegeofEngineeringTCE">
+                    <i class="fa fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div align="center">
+            Made in India <br> Copyright &copy; 2023 TCE
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+
+             // Add these lines to check the values
+     console.log("Register No:", registerNo);
+     console.log("Roll No:", rollNo);
+     console.log("Year:", year);
+     console.log("Email:", email);
+     console.log("Phone:", phone);
+     console.log("Address:", address);
+     console.log("Father:", father);
+     console.log("Mother:", mother);
+     console.log("Aadhar:", aadhar);
+     console.log("DOB:", dob);
+     console.log("Gender:", gender);
+     console.log("Dist:", dist);
+     console.log("Pincode:", pincode);
+     console.log("File:", file);
+     console.log("Image:", image);
+     console.log("Uploaded:", uploaded);
+     
+            var firstName = document.getElementsByName("first_name")[0].value;
+            if (firstName.length === 0) {
+                alert("First Name is required");
+                return false;
+            }
+
+            var lastName = document.getElementsByName("last_name")[0].value;
+            if (lastName.length === 0) {
+                alert("Last Name is required");
+                return false;
+            }
+
+            var registerNo = document.getElementsByName("register_no")[0].value;
+            if (!/^[a-zA-Z0-9]{10}$/.test(registerNo)) {
+                alert("Register No must be 10 characters long and can contain both digits and alphabets");
+                return false;
+            }
+
+            var rollNo = document.getElementsByName("roll_no")[0].value;
+                if (!/^[a-zA-Z0-9]{7}$/.test(rollNo)) {
+                    alert("Roll No must be 7 characters long and can contain both digits and alphabets");
+                    return false;
+                }
+
+            var year = document.getElementsByName("year")[0].value;
+            if (!/^(I|II|III|IV|V)$/.test(year)) {
+                alert("Year must be I, II, III, IV, or V");
+                return false;
+            }
+
+            var email = document.getElementsByName("email")[0].value;
+            if (!(/^\S+@\S+\.\S+$/.test(email))) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            var phone = document.getElementsByName("phone")[0].value;
+            if (!(/^\d{10}$/.test(phone))) {
+                alert("Invalid phone number");
+                return false;
+            }
+
+            var address = document.getElementsByName("address")[0].value;
+            if (address.length === 0) {
+                alert("Address is required");
+                return false;
+            }
+
+            var father = document.getElementsByName("father")[0].value;
+            if (father.length === 0) {
+                alert("Father's Name is required");
+                return false;
+            }
+
+            var mother = document.getElementsByName("mother")[0].value;
+            if (mother.length === 0) {
+                alert("Mother's Name is required");
+                return false;
+            }
+
+            var aadhar = document.getElementsByName("aadhar")[0].value;
+            if (!(/^\d{12}$/.test(aadhar))) {
+                alert("Aadhar No must be 12 digits");
+                return false;
+            }
+
+            var dob = document.getElementsByName("dob")[0].value;
+            if (!(/^\d{4}-\d{2}-\d{2}$/.test(dob))) {
+                alert("Invalid date of birth");
+                return false;
+            }
+
+            var gender = document.querySelector('input[name="gender"]:checked');
+            if (!gender) {
+                alert("Gender is required");
+                return false;
+            }
+
+            var dist = document.getElementsByName("dist")[0].value;
+            if (dist.length === 0) {
+                alert("District is required");
+                return false;
+            }
+
+            var pincode = document.getElementsByName("pincode")[0].value;
+            if (!(/^\d{6}$/.test(pincode))) {
+                alert("Pincode must be 6 digits");
+                return false;
+            }
+
+            var file = document.getElementsByName("file")[0].value;
+            if (file.length === 0) {
+                alert("File upload is required");
+                return false;
+            }
+
+            var image = document.getElementsByName("image")[0].value;
+            if (image.length === 0) {
+                alert("Image upload is required");
+                return false;
+            }
+
+            var uploaded = document.getElementsByName("uploaded")[0].checked;
+            if (!uploaded) {
+                alert("Uploaded checkbox must be checked");
+                return false;
+            }
+
+            return true; 
+        }
+
+        // Add this to your existing script
+        document.getElementsByName("image")[0].addEventListener('change', function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = document.getElementById("uploadedImage");
+                img.style.display = "block";
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+
+    </script>
+
+</body>
+</html>
+
+
