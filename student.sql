@@ -1,0 +1,20 @@
+-- Create Student table
+CREATE TABLE Student (
+  student_id INT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  register_no VARCHAR(10) NOT NULL,
+  roll_no VARCHAR(7) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  address VARCHAR(200) NOT NULL,
+  father_name TEXT NOT NULL,
+  aadhar VARCHAR(12) NOT NULL,
+  birthday TEXT NOT NULL,
+  gender VARCHAR(6) NOT NULL,
+  dist TEXT NOT NULL,
+  pincode TEXT NOT NULL,
+  file LONGBLOB NOT NULL,
+  image VARCHAR(150) NOT NULL,
+  uploaded DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
